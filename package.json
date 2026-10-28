@@ -1,0 +1,24 @@
+{
+  "name": "skill-swap-mason",
+  "version": "1.0.0",
+  "description": "Skillswap\r By: Mason Britt\r Description: A MVP of a platform designed to let users trade tutor sessions instead of paying for them\r Technologies: JavaScript, HTML, CSS",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WartburgMason/skill-swap-mason.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/WartburgMason/skill-swap-mason/issues"
+  },
+  "homepage": "https://github.com/WartburgMason/skill-swap-mason#readme",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}

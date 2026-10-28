@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap  |  Learn and Teach</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <script src="skillswap-functions.js"></script>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Skill Swap</a>
+            <nav aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </nav>
+            <a href="#login" class="login-button">Login</a>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <p class="eyebrow">LEARN SOMETHING NEW TODAY</p>
+                <h1>Your skills have value.<br>
+                    <span>Share them with the world.</span>
+                </h1>
+                <p class="hero-description">
+                    Connect with tutors, learn new skills, or exchange
+                    your knowledge with people who want to learn from you.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#skills" class="button primary-button">
+                        Explore Skills
+                    </a>
+                    <a href="#Become-A-Tutor" class="button secondary-button">
+                        Become a Tutor
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="skills" class="skills-section">
+            <h2>Explore Tutors</h2>
+            <div class="container">
+            <div class="filter-bar">
+                <label for="skill-filter">Filter by skill:</label>
+                <select id="skill-filter" name="skill-filter">
+                    <option  value="All" selected>All Skills</option>
+                    <option value="Art">Art</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Language">Language</option>
+                    <option value="Music">Music</option>
+                    <option value="Programming">Programming</option>
+                </select>
+                <div class="Find-Matches">
+                    <select id="FMskill-filter" name="FMskill-filter">
+                    <option  value="All" selected>All Skills</option>
+                    <option value="Art">Art</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Language">Language</option>
+                    <option value="Music">Music</option>
+                    <option value="Programming">Programming</option>
+                </select>
+                <label for="max-rate">Max rate per hour:</label>
+                <input type="number" id="max-rate" name="max-rate" min="0" step="0.01" placeholder="Any rate">
+                <button type="secondary-button" id="clear-filters" onclick="document.getElementById('FMskill-filter').value = 'All'; document.getElementById('max-rate').value = ''; document.getElementById('skill-filter').dispatchEvent(new Event('change', { bubbles: true })); document.getElementById('max-rate').dispatchEvent(new Event('input', { bubbles: true }));">Clear filters</button>
+                <button type="primary-button" id="find-matches">Find Matches</button>
+                </div>
+            </div>
+            <div id="skill-grid" class="skill-grid">
+            </div>
+        </section>
+        <section id="calculate" class="calculate_section">
+            <div class="container">
+                <h2>Calculate Cost</h2>
+                <div class="form-group">
+                    <label for="hours">Hours</label>
+                    <input type="number" id="hours" name="hours" min="0" step="0.5" value="0" oninput="if (this.value < 0) this.value = 0">
+                    <!script prevents negative numbers and changes to 0 if one is inputted!>
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate per hour</label>
+                    <input type="number" id="rate" name="rate" min="0" step="0.01" value="0" oninput="if (this.value < 0) this.value = 0">
+                </div>
+                <p>Total: <output id="cost-result" aria-live="polite">$0.00</output></p>
+            </div>
+        </section>
+        <section id="about" class="about-section">
+            <div class="container about-container">
+                <h2>About Skill Swap</h2>
+                <p>
+                    Skill Swap is a platform designed to help people learn new skills, share their knowledge, and connect with others. 
+                    Whether you're looking to learn programming, improve your cooking, practice a language, or develop a new hobby, Skill Swap makes it easier to find people with the skills you're looking for.
+                </p>
+                <p>
+                    Our goal is to create a community where everyone has something to teach and something to learn. 
+                    By allowing users to exchange skills, offer tutoring, and connect with others who share their interests, Skill Swap makes learning more accessible, affordable, and collaborative.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+    <div class="container contact-container">
+        <div class="contact-info">
+            <p class="eyebrow">GET IN TOUCH</p>
+            <h2>We'd love to hear from you.</h2>
+            <p>
+                Have a question about Skill Swap or an idea to share?
+                Send us a message and let us know how we can help.
+            </p>
+        </div>
+
+        <form class="contact-form" action="#" method="post">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="What is your message about?"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Write your message here..."
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="button primary-button">
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Skill Swap. All rights reserved.</p>
+    </footer>
+</body>
+</html>
