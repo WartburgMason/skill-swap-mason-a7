@@ -7,6 +7,7 @@
     <title>Skill Swap  |  Learn and Teach</title>
 </head>
 <body>
+    <script src="api-service.js"></script>
     <script src="script.js"></script>
     <script src="skillswap-functions.js"></script>
     <header class="site-header">
@@ -38,11 +39,137 @@
                     <a href="#skills" class="button primary-button">
                         Explore Skills
                     </a>
-                    <a href="#Become-A-Tutor" class="button secondary-button">
+                    <a href="#post-skill" class="button secondary-button">
                         Become a Tutor
                     </a>
                 </div>
             </div>
+        </section>
+        <style>
+            .post-section {
+                padding: 4rem 1.25rem;
+                background: linear-gradient(135deg, #f0fdfa, #eff6ff);
+            }
+
+            .post-section h2 {
+                margin: 0 0 1.75rem;
+                color: #172554;
+                text-align: center;
+                font-size: clamp(1.75rem, 4vw, 2.25rem);
+            }
+
+            .post-form {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.1rem 1.25rem;
+                max-width: 720px;
+                margin: 0 auto;
+                padding: clamp(1.25rem, 4vw, 2.25rem);
+                border: 1px solid #dbeafe;
+                border-radius: 1rem;
+                background: #fff;
+                box-shadow: 0 18px 45px rgb(30 64 175 / 10%);
+            }
+
+            .post-form label {
+                align-self: end;
+                color: #334155;
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+
+            .post-form input,
+            .post-form select,
+            .post-form textarea {
+                box-sizing: border-box;
+                width: 100%;
+                min-height: 46px;
+                padding: 0.7rem 0.85rem;
+                border: 1px solid #cbd5e1;
+                border-radius: 0.55rem;
+                background: #fff;
+                color: #0f172a;
+                font: inherit;
+                transition: border-color 160ms ease, box-shadow 160ms ease;
+            }
+
+            .post-form textarea {
+                min-height: 120px;
+                padding-top: 0.8rem;
+                resize: vertical;
+            }
+
+            .post-form input:focus,
+            .post-form select:focus,
+            .post-form textarea:focus {
+                outline: none;
+                border-color: #2563eb;
+                box-shadow: 0 0 0 3px rgb(37 99 235 / 16%);
+            }
+
+            .post-form .full-width,
+            .post-form button {
+                grid-column: 1 / -1;
+            }
+
+            .post-form button {
+                min-height: 48px;
+                margin-top: 0.35rem;
+                border: 0;
+                border-radius: 0.6rem;
+                background: #2563eb;
+                color: #fff;
+                font: inherit;
+                font-weight: 700;
+                cursor: pointer;
+                transition: background 160ms ease, transform 160ms ease;
+            }
+
+            .post-form button:hover {
+                background: #1d4ed8;
+                transform: translateY(-1px);
+            }
+
+            .post-form button:focus-visible {
+                outline: 3px solid #93c5fd;
+                outline-offset: 3px;
+            }
+
+            @media (max-width: 560px) {
+                .post-section { padding: 3rem 1rem; }
+                .post-form { grid-template-columns: 1fr; }
+                .post-form label { align-self: auto; }
+            }
+        </style>
+        <section id="post-skill" class="post-section">
+            <h2>Share Your Skills!</h2>
+            <form action="" method="" class="post-form" id="post-form">
+                <label for="title">Title for posting</label>
+                <input type="text" id="title" name="title" placeholder="E.g., Interview Prep" required>
+
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Art">Art</option>
+                    <option value="Career">Career</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Language">Language</option>
+                    <option value="Music">Music</option>
+                    <option value="Programming">Programming</option>
+                </select>
+
+                <label for="price">Rate per hour ($)</label>
+                <input type="number" id="price" name="rate" min="0" step="0.01" value="0" required oninput="if (this.value < 0) this.value = 0">
+
+                <label for="provider">Your name</label>
+                <input type="text" id="provider" name="provider" placeholder="Your name" required>
+
+                <label for="description" class="full-width">Describe what you offer</label>
+                <textarea id="description" name="description" class="full-width" rows="4" placeholder="Share what learners can expect..." required></textarea>
+
+                <button type="submit">Post Your Skill</button>
+            </form>
         </section>
         <section id="skills" class="skills-section">
             <h2>Explore Tutors</h2>
@@ -52,6 +179,7 @@
                 <select id="skill-filter" name="skill-filter">
                     <option  value="All" selected>All Skills</option>
                     <option value="Art">Art</option>
+                    <option value="Career">Career</option>
                     <option value="Cooking">Cooking</option>
                     <option value="Fitness">Fitness</option>
                     <option value="Language">Language</option>
@@ -62,6 +190,7 @@
                     <select id="FMskill-filter" name="FMskill-filter">
                     <option  value="All" selected>All Skills</option>
                     <option value="Art">Art</option>
+                    <option value="Career">Career</option>
                     <option value="Cooking">Cooking</option>
                     <option value="Fitness">Fitness</option>
                     <option value="Language">Language</option>
@@ -105,7 +234,6 @@
                 </p>
             </div>
         </section>
-
         <section id="contact" class="contact-section">
     <div class="container contact-container">
         <div class="contact-info">
@@ -117,7 +245,7 @@
             </p>
         </div>
 
-        <form class="contact-form" action="#" method="post">
+        <form class="contact-form" id="contact-form" action="#" method="post">
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input

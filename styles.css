@@ -368,6 +368,11 @@ nav a.active {
     font-size: 0.95rem;
     margin-bottom: 10px;
 }
+.skill-card p.long-description{
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+}
 
 .filter-bar {
     display: flex;
@@ -460,3 +465,88 @@ nav a.active {
     gap: 8px;
     margin-bottom: 20px;
 }
+
+:is(.post-skill-section, #post-skill-section, #post-skill) {
+    padding: 70px 0;
+    background: #f8fafc;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) .container {
+    max-width: 700px;
+    padding: 35px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) h2 {
+    margin-bottom: 25px;
+    color: var(--text);
+    font-size: 2rem;
+    text-align: center;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) form {
+    display: grid;
+    gap: 20px;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) label {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) input,
+:is(.post-skill-section, #post-skill-section, #post-skill) select,
+:is(.post-skill-section, #post-skill-section, #post-skill) textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+    font: inherit;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) input:focus,
+:is(.post-skill-section, #post-skill-section, #post-skill) select:focus,
+:is(.post-skill-section, #post-skill-section, #post-skill) textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(96, 88, 238, 0.12);
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) button {
+    justify-self: start;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+:is(.post-skill-section, #post-skill-section, #post-skill) button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    :is(.post-skill-section, #post-skill-section, #post-skill) {
+        padding: 55px 0;
+    }
+
+    :is(.post-skill-section, #post-skill-section, #post-skill) .container {
+        padding: 24px;
+    }
+}
+

@@ -1,4 +1,4 @@
-const { filterSkillsByCategory, calculateTotalCost, matchSkills } = require('../skillswap-functions.js');
+const { filterSkillsByCategory, calculateTotalCost, matchSkillsToUser } = require('../skillswap-functions.js');
 const skills= [
     {title: "JavaScript", category: "Programming",tutor: "John Doe", price: 20},
     {title: "Python", category: "Programming", tutor: "Jane Smith", price: 25},
@@ -62,7 +62,7 @@ describe('Test Calculator', () => {
 describe("Category and Price Filter", () =>{
     test("Handles Category Filter", () =>{
         const user1={category: "Programming", maxPrice: ""};
-        const result=matchSkills(user1, skills)
+        const result=matchSkillsToUser(user1, skills)
         expect(result).toEqual([
             { title: "JavaScript", category: "Programming", tutor: "John Doe", price: 20 },
             { title: "Python", category: "Programming", tutor: "Jane Smith", price: 25 },
@@ -71,14 +71,14 @@ describe("Category and Price Filter", () =>{
     });
     test("Handle Category and Price Filter", () => {
         const user2={category: "Programming", maxPrice: 15}
-        const result=matchSkills(user2, skills);
+        const result=matchSkillsToUser(user2, skills);
         expect(result).toEqual([
             { title: "Web Development", category: "Programming", tutor: "Bob Johnson", price: 0 }
         ]);
     });
     test("Handle Price Filter", () =>{
         const user3={category: "All", maxPrice: 15};
-        const result=matchSkills(user3, skills);
+        const result=matchSkillsToUser(user3, skills);
         expect(result).toEqual([
             { title: "Web Development", category: "Programming", tutor: "Bob Johnson", price: 0 },
             {title: "Guitar Lessons", category: "Music", tutor: "Alice Brown", price: 15}
@@ -86,14 +86,14 @@ describe("Category and Price Filter", () =>{
     });
     test("Handle Free filter", () =>{
         const user4={category: "All", maxPrice: 0}
-        const result=matchSkills(user4, skills)
+        const result=matchSkillsToUser(user4, skills)
         expect(result).toEqual([
             { title: "Web Development", category: "Programming", tutor: "Bob Johnson", price: 0 }
         ]);
     });
     test("Returns Empty Array if no tutors match filter", () => {
         const user5={category: "Art", maxPrice: 15};
-        const result=matchSkills(user5, skills);
+        const result=matchSkillsToUser(user5, skills);
         expect(result).toEqual([
         ]);
     })
